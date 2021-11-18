@@ -1,0 +1,156 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-field {
+  width: 500px;
+
+  background-color: #f2f2f2;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.input-text {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+}
+
+.input-text:focus {
+  outline: none;
+}
+
+.form-field-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-button {
+  color: white;
+  font-family: "Lato";
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  background-color: #2ab585;
+  border: none;
+  width: 15rem;
+  padding: 1rem;
+
+  cursor: pointer;
+
+  transition: all 0.5s;
+}
+
+.input-button:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.input-button:active {
+  transform: translateY(0.1rem);
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.margin-top {
+  margin-top: 0.8rem;
+}
+
+.total-output {
+  display: flex;
+  flex-direction: row;
+}
+
+.total-output-label {
+  width: 33.3%;
+  font-size: 1.5rem;
+}
+.text-output-label {
+  margin-top: 20px;
+  font-size: 15px;
+}
+.text-output {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.first-output,
+.second-output,
+.third-output {
+  margin-top: 2rem;
+  height: 100%;
+  font-size: 15px;
+}
+
+.underline {
+  border-bottom: 2px solid #5bc6ac;
+}
+
+.form-group-radio {
+  margin-bottom: 0.5rem;
+}
+
+.form-data-radio {
+  display: none;
+}
+
+.form-data-label__radio {
+  font-size: 1.5rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.form-radio-button {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 0.5rem solid #28b485;
+
+  position: absolute;
+  left: 0;
+}
+
+.form-radio-button::after {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #28b485;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+}
+
+.form-data-radio:checked ~ .form-data-label__radio .form-radio-button::after {
+  opacity: 1;
+}

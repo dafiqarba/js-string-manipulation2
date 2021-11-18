@@ -1,0 +1,17 @@
+{
+    //default, preconfigured=4500
+    "liveServer.settings.port": 5501,  
+     // can be changed, like /folder/..
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser" : "chrome:PrivateMode",
+    // "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome --incognito --remote-debugging-port=9222",
+    //default
+    "liveServer.settings.NoBrowser" : false, 
+    //default
+    "liveServer.settings.ignoreFiles" : [
+            ".vscode/**",
+            "**/*.scss",
+            "**/*.sass"
+    ]
+
+}
