@@ -8,4 +8,4 @@ Predefined conditions of output are as follow:
 4. replace vowel letters with a sequence of number and alphabet
 
 Result:
-![Result Preview](https://github.com/dafiqarba/modifyStringJS/blob/main/img/result.png?raw=true)
+![Result Preview](https://github.com/dafiqarba/modifyStringJS2/blob/main/img/result.png?raw=true)
