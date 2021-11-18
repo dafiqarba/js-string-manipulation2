@@ -186,24 +186,6 @@ button.addEventListener("click", () => {
 
     return arrayOfString.join("");
   }
-
-  /* 
-  function replaceNumber(string, sequence, typeOfSequence) {
-    let arrayOfString = string.split("");
-    let numCount = 0;
-
-    if (typeOfSequence == "angka") {
-      for (let i = 0; i < arrayOfString.length; i++) {
-        if (arrayOfString[i] == " ") {
-          arrayOfString[i] == " ";
-        } else {
-          arrayOfString[i] = sequence.numSequence[numCount] + arrayOfString[i];
-          numCount++;
-        }
-      }
-    }
-    return arrayOfString.join("");
-  } */
 });
 /*
 
@@ -221,3 +203,21 @@ tugas kali ini huruf vokal diganti denga ke 4 deret diatas.
 user bisa memilih, misal menggunakan radio button.. deret mana yg akan menggantikan huruf fokal
 
 */
+
+/* 
+  function replaceNumber(string, sequence, typeOfSequence) {
+    let arrayOfString = string.split("");
+    let numCount = 0;
+
+    if (typeOfSequence == "angka") {
+      for (let i = 0; i < arrayOfString.length; i++) {
+        if (arrayOfString[i] == " ") {
+          arrayOfString[i] == " ";
+        } else {
+          arrayOfString[i] = sequence.numSequence[numCount] + arrayOfString[i];
+          numCount++;
+        }
+      }
+    }
+    return arrayOfString.join("");
+  } */
