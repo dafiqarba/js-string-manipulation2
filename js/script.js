@@ -1,7 +1,10 @@
 "use strict";
 
 let button = document.querySelector(".input-button");
-let displayOutput = document.querySelector(".text-output");
+let displayOutput1 = document.querySelector(".out1");
+let displayOutput2 = document.querySelector(".out2");
+let displayOutput3 = document.querySelector(".out3");
+let displayOutput4 = document.querySelector(".out4");
 
 button.addEventListener("click", () => {
   let userInput = document.querySelector(".input-text").value;
@@ -11,25 +14,30 @@ button.addEventListener("click", () => {
   let radioEven = document.querySelector("#genap");
   let radioNum = document.querySelector("#angka");
 
-  let resultOfSequence = [];
+  let resultOfSequence = {};
   let typeOfSequence;
 
   if (radioFibo.checked) {
     typeOfSequence = document.querySelector("#fibonacci").value;
-    displayOutput.textContent = replaceVowel(
+    displayOutput1.textContent = replaceVowel(
       userInput,
       generateFibonacci(userInput),
       typeOfSequence
     );
   } else if (radioOdd.checked) {
     typeOfSequence = document.querySelector("#ganjil").value;
-    displayOutput.textContent = replaceVowel(userInput, generateOdd(userInput), typeOfSequence);
+    displayOutput2.textContent = replaceVowel(userInput, generateOdd(userInput), typeOfSequence);
   } else if (radioEven.checked) {
     typeOfSequence = document.querySelector("#genap").value;
-    displayOutput.textContent = replaceVowel(userInput, generateEven(userInput), typeOfSequence);
+    displayOutput3.textContent = replaceVowel(userInput, generateEven(userInput), typeOfSequence);
   } else if (radioNum.checked) {
     typeOfSequence = document.querySelector("#angka").value;
-    displayOutput.textContent = replaceNumber(userInput, generateNumber(userInput), typeOfSequence);
+    displayOutput4.textContent = replaceVowel(
+      userInput,
+      generateNumber(userInput),
+      typeOfSequence,
+      generateAlphabet(userInput)
+    );
   }
 
   console.log(resultOfSequence);
@@ -63,7 +71,8 @@ button.addEventListener("click", () => {
       presentNumber = sum;
       fibonacciNum.push(sum);
     }
-    resultOfSequence.push({ fibonacciSequence: fibonacciNum });
+    // resultOfSequence.push({ fibonacciSequence: fibonacciNum });
+    resultOfSequence.fibonacciSequence = fibonacciNum;
     return resultOfSequence;
   }
 
@@ -76,7 +85,7 @@ button.addEventListener("click", () => {
         evenNumber.push(i);
       }
     }
-    resultOfSequence.push({ evenSequence: evenNumber });
+    resultOfSequence.evenSequence = evenNumber;
     return resultOfSequence;
   }
 
@@ -89,37 +98,88 @@ button.addEventListener("click", () => {
         oddNumber.push(i);
       }
     }
-    resultOfSequence.push({ oddSequence: oddNumber });
+    resultOfSequence.oddSequence = oddNumber;
     return resultOfSequence;
   }
 
   function generateNumber(string) {
-    let totalChar = checkChar(string);
+    let totalChar = checkTotalVowels(string) / 2;
     let numSequence = [];
 
-    for (let i = 1; i < totalChar + 1; i++) {
+    for (let i = 1; i <= totalChar; i++) {
       numSequence.push(i);
     }
-    resultOfSequence.push({ numSequence: numSequence });
+    resultOfSequence.numSequence = numSequence;
+    return resultOfSequence;
+  }
+  function generateAlphabet(string) {
+    let alphabet = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+    ];
+    let alpSequence = [];
+    let totalChar = checkTotalVowels(string) / 2;
+
+    for (let i = 0; i <= totalChar - 1; i++) {
+      alpSequence.push(alphabet[i]);
+    }
+    resultOfSequence.alpSequence = alpSequence;
     return resultOfSequence;
   }
 
-  function replaceVowel(string, sequence, typeOfSequence) {
+  function replaceVowel(string, sequence, typeOfSequence, sequenceAlph) {
     let vowels = "aiueoAIUEO";
     let arrayOfString = string.split("");
     let count = 0;
+    let countNumAp = 0;
+    let countNum = 0;
+    let countAlp = 0;
 
     for (let i = 0; i < arrayOfString.length; i++) {
       if (vowels.includes(arrayOfString[i])) {
         if (typeOfSequence == "fibonacci") {
-          arrayOfString[i] = sequence[0].fibonacciSequence[count];
+          arrayOfString[i] = sequence.fibonacciSequence[count];
+          sequence.fibonacciSequence;
           count++;
         } else if (typeOfSequence == "ganjil") {
-          arrayOfString[i] = sequence[0].oddSequence[count];
+          arrayOfString[i] = sequence.oddSequence[count];
           count++;
         } else if (typeOfSequence == "genap") {
-          arrayOfString[i] = sequence[0].evenSequence[count];
+          arrayOfString[i] = sequence.evenSequence[count];
           count++;
+        } else if (typeOfSequence == "angka") {
+          if (countNumAp % 2 == 0) {
+            arrayOfString[i] = sequence.numSequence[countNum];
+            countNum++;
+          } else {
+            arrayOfString[i] = sequenceAlph.alpSequence[countAlp];
+            countAlp++;
+          }
+          countNumAp++;
         }
       }
     }
@@ -127,6 +187,7 @@ button.addEventListener("click", () => {
     return arrayOfString.join("");
   }
 
+  /* 
   function replaceNumber(string, sequence, typeOfSequence) {
     let arrayOfString = string.split("");
     let numCount = 0;
@@ -136,13 +197,13 @@ button.addEventListener("click", () => {
         if (arrayOfString[i] == " ") {
           arrayOfString[i] == " ";
         } else {
-          arrayOfString[i] = sequence[0].numSequence[numCount] + arrayOfString[i];
+          arrayOfString[i] = sequence.numSequence[numCount] + arrayOfString[i];
           numCount++;
         }
       }
     }
     return arrayOfString.join("");
-  }
+  } */
 });
 /*
 
